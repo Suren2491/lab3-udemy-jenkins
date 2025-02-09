@@ -1,11 +1,10 @@
 pipeline {
     agent any
     tools {
-        go 'go-1.19' // Comes from the Jenkins global config
+        go 'go-1.19' // Comes from the jenkins global config
     }
     environment {
         ENV = "${env.BRANCH_NAME == 'master' ? 'PROD' : 'DEV'}" // Define the ENV based on the branch name
-        BRANCH = "${env.BRANCH_NAME}" // Needed by the deployment script
     }
 
     stages {
@@ -19,6 +18,5 @@ pipeline {
                 sh 'bash scripts/test.sh' // Run the test
             }
         }
-   
     }
 }
