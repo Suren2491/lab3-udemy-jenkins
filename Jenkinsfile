@@ -1,10 +1,8 @@
 pipeline {
     agent any
     tools {
-        Go'go-1.23.6' // Comes from the jenkins global config
-    }
-    environment {
-        ENV = "${env.BRANCH_NAME == 'master' ? 'PROD' : 'DEV'}" // Define the ENV based on the branch name
+       go 'go-1.23.6' // Comes from the jenkins global config
+    
     }
 
     stages {
